@@ -75,8 +75,12 @@ contract RWAPSSF {
         require(player[idx].timestamp + timeLimit < block.timestamp, "Please wait for 10 minutes before withdraw money back");
         require(numPlayer == 1 || numInput < 2, "Please wait");
         
-        payable(player[1].addr).transfer(reward/2);
-        payable(player[2].addr).transfer(reward/2);
+        if (numPlayer == 1) {
+            payable(player[idx].addr).transfer(reward);
+        } else {
+            payable(player[1].addr).transfer(reward/2);
+            payable(player[2].addr).transfer(reward/2);
+        }
         reset();
     }
 
