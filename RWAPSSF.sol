@@ -43,9 +43,9 @@ contract RWAPSSF {
     }
 
     function addPlayer() public payable {
-        require(numPlayer < 2);
-        require(msg.value == 1 ether);
-        require(playersNumber[msg.sender] == 0);
+        require(numPlayer < 2, "Already got two players");
+        require(msg.value == 1 ether, "1 ether");
+        require(playersNumber[msg.sender] == 0, "Can't add again");
 
         reward += msg.value;
         numPlayer++;
@@ -57,9 +57,9 @@ contract RWAPSSF {
 
     function input(uint choice) public  {
         uint idx = playersNumber[msg.sender];
-        require(idx != 0);
-        require(numPlayer == 2);
-        require(choice < 7);
+        require(idx != 0, "Registered player only");
+        require(numPlayer == 2, "Player not enough");
+        require(choice < 7, "Please select 0 - 6");
 
         player[idx].choice = choice;
         numInput++;
@@ -71,8 +71,8 @@ contract RWAPSSF {
 
     function withdraw() public payable {
         uint idx = playersNumber[msg.sender];
-        require(player[idx].timestamp + timeLimit < block.timestamp);
-        require(numPlayer == 1 || numInput == 1);
+        require(player[idx].timestamp + timeLimit < block.timestamp, "Please wait for 10 minutes before withdraw money back");
+        require(numPlayer == 1 || numInput == 1, "Please wait");
         
         payable(player[idx].addr).transfer(reward);
         reset();
