@@ -32,7 +32,7 @@ contract RWAPSSF {
 
     function viewPlayer() public view returns(uint choice, uint timestamp, uint playerNumber, address addr){
         uint playerId = playersNumber[msg.sender];
-        require(playerId != 0);
+        require(playerId != 0, "Registered player only");
 
         Player memory temp = player[playerId];
         return (temp.choice, temp.timestamp, playerId, temp.addr);
