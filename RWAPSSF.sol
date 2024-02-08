@@ -45,7 +45,7 @@ contract RWAPSSF {
     function addPlayer() public payable {
         require(numPlayer < 2, "Already got two players");
         require(msg.value == 1 ether, "1 ether");
-        require(playersNumber[msg.sender] == 0, "Can't add again");
+        require(playersNumber[msg.sender] == 0, "Can't register again");
 
         reward += msg.value;
         numPlayer++;
@@ -71,6 +71,7 @@ contract RWAPSSF {
 
     function withdraw() public payable {
         uint idx = playersNumber[msg.sender];
+        require(idx != 0, "Registered player only");
         require(player[idx].timestamp + timeLimit < block.timestamp, "Please wait for 10 minutes before withdraw money back");
         require(numPlayer == 1 || numInput == 1, "Please wait");
         
