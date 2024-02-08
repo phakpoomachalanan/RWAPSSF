@@ -4,7 +4,7 @@ pragma solidity >=0.7.0 <0.9.0;
 
 import "./CommitReveal.sol";
 
-contract RPS {
+contract RWAPSSF {
     struct Player {
         uint choice; // 0 - Rock, 1 - Fire , 2 - Scissors, 3 - Sponge, 4 - Paper, 5 - Air, 6 - Water, 7 - Undefined
         uint timestamp;
@@ -29,7 +29,6 @@ contract RPS {
             player[i].playerNumber = 3;
             player[i].addr = address(0);
         }
-
     }
 
     function viewPlayer() public view returns(uint choice, uint timestamp, uint playerNumber, address addr){
