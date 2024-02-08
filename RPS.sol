@@ -46,15 +46,12 @@ contract RPS {
         address payable account0 = payable(player[0].addr);
         address payable account1 = payable(player[1].addr);
         if ((p0Choice + 1) % 7 == p1Choice || (p0Choice + 2) % 7 == p1Choice || (p0Choice + 3) % 7 == p1Choice) {
-            // to pay player[1]
-            account1.transfer(reward);
+            account0.transfer(reward);
         }
         else if ((p1Choice + 1) % 7 == p0Choice || (p1Choice + 2) % 7 == p0Choice || (p1Choice + 3) % 7 == p0Choice) {
-            // to pay player[0]
-            account0.transfer(reward);    
+            account1.transfer(reward);    
         }
         else {
-            // to split reward
             account0.transfer(reward / 2);
             account1.transfer(reward / 2);
         }
