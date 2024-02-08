@@ -18,7 +18,7 @@ contract RWAPSSF {
     mapping (uint => Player) private player;
     mapping (address => uint) private playersNumber;
 
-    function reset() private {
+    function _reset() private {
         numPlayer = 0;
         reward = 0;
         numInput = 0;
