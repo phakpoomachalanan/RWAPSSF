@@ -81,7 +81,7 @@ contract RWAPSSF {
             payable(player[1].addr).transfer(reward/2);
             payable(player[2].addr).transfer(reward/2);
         }
-        reset();
+        _reset();
     }
 
     function _checkWinnerAndPay() private {
@@ -101,6 +101,6 @@ contract RWAPSSF {
             account1.transfer(reward / 2);
         }
 
-        reset();
+        _reset();
     }
 }
