@@ -24,7 +24,7 @@ contract RPS {
     function input(uint choice, uint idx) public  {
         require(numPlayer == 2);
         require(msg.sender == player[idx].addr);
-        require(choice < 8);
+        require(choice < 7);
         player[idx].choice = choice;
         numInput++;
         if (numInput == 2) {
