@@ -11,18 +11,18 @@ contract RWAPSSF {
         uint playerNumber;
         address addr;
     }
+
     uint internal numPlayer = 0;
     uint internal reward = 0;
-    mapping (uint => Player) private player;
-    mapping (address => uint) private playersNumber;
     uint internal numInput = 0;
     uint internal timeLimit = 1 minutes;
+    mapping (uint => Player) private player;
+    mapping (address => uint) private playersNumber;
 
     function reset() private {
         numPlayer = 0;
         reward = 0;
         numInput = 0;
-
         for(uint i = 0; i < 2; i++) {
             playersNumber[player[i].addr] = 0;
             player[i].choice = 7;
@@ -35,6 +35,7 @@ contract RWAPSSF {
     function viewPlayer() public view returns(uint choice, uint timestamp, uint playerNumber, address addr){
         uint playerId = playersNumber[msg.sender];
         require(playerId != 0);
+
         Player memory temp = player[playerId];
         return (temp.choice, temp.timestamp, temp.playerNumber, temp.addr);
     }
@@ -59,9 +60,9 @@ contract RWAPSSF {
 
     function input(uint choice) public  {
         uint idx = playersNumber[msg.sender];
+        require(idx != 0);
         require(numPlayer == 2);
         require(choice < 7);
-        require(idx != 0);
 
         player[idx].choice = choice;
         numInput++;
@@ -85,6 +86,7 @@ contract RWAPSSF {
         uint p1Choice = player[2].choice;
         address payable account0 = payable(player[0].addr);
         address payable account1 = payable(player[1].addr);
+
         if ((p0Choice + 1) % 7 == p1Choice || (p0Choice + 2) % 7 == p1Choice || (p0Choice + 3) % 7 == p1Choice) {
             account0.transfer(reward);
         }
