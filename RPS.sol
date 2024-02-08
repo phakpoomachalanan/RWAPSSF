@@ -8,47 +8,65 @@ contract RPS {
     struct Player {
         uint choice; // 0 - Rock, 1 - Fire , 2 - Scissors, 3 - Sponge, 4 - Paper, 5 - Air, 6 - Water, 7 - Undefined
         uint timestamp;
+        uint playerNumber;
         address addr;
     }
-    uint public numPlayer = 0;
-    uint public reward = 0;
-    mapping (uint => Player) public player;
-    uint public numInput = 0;
-    uint public timeLimit = 1 minutes;
+    uint internal numPlayer = 0;
+    uint internal reward = 0;
+    mapping (uint => Player) private player;
+    mapping (address => uint) private playersNumber;
+    uint internal numInput = 0;
+    uint internal timeLimit = 1 minutes;
 
     function reset() private {
         numPlayer = 0;
         reward = 0;
         numInput = 0;
-        player[0].addr = address(0);
-        player[1].addr = address(0);
+
+        for(uint i = 0; i < 2; i++) {
+            player[i].choice = 0;
+            player[i].timestamp = 0;
+            player[i].playerNumber = 3;
+            player[i].addr = address(0);
+        }
+
+    }
+
+    function viewPlayer() public view returns(uint choice, uint timestamp, uint playerNumber, address addr){
+        Player memory temp = player[playersNumber[msg.sender]];
+        return (temp.choice, temp.timestamp, temp.playerNumber, temp.addr);
+    }
+
+    function viewGameStatus() public view returns(uint numberOfPlayer, uint gameReward, uint numberOfInput, uint canWithdrawAfter) {
+        return (numPlayer, reward, numInput, timeLimit);
     }
 
     function addPlayer() public payable {
         require(numPlayer < 2);
         require(msg.value == 1 ether);
         reward += msg.value;
-        player[numPlayer].choice = 7;
         player[numPlayer].timestamp = block.timestamp;
+        player[numPlayer].playerNumber = numPlayer;
         player[numPlayer].addr = msg.sender;
 
         numPlayer++;
     }
 
-    function input(uint choice, uint idx) public  {
+    function input(uint choice) public  {
         require(numPlayer == 2);
-        require(msg.sender == player[idx].addr);
         require(choice < 7);
-        player[idx].choice = choice;
+        player[playersNumber[msg.sender]].choice = choice;
         numInput++;
         if (numInput == 2) {
             _checkWinnerAndPay();
         }
     }
 
-    function withdraw(uint idx) public payable {
+    function withdraw() public payable {
+        uint idx = playersNumber[msg.sender];
         require(player[idx].addr == msg.sender);
-        require(player[idx].timestamp + timeLimit < block.timestamp && (numPlayer == 1 || numInput == 1));
+        require(player[idx].timestamp + timeLimit < block.timestamp);
+        require(numPlayer == 1 || numInput == 1);
         
         payable(player[idx].addr).transfer(reward);
         reset();
