@@ -2,6 +2,8 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
+import "./CommitReveal.sol";
+
 contract RPS {
     struct Player {
         uint choice; // 0 - Rock, 1 - Fire , 2 - Scissors, 3 - Sponge, 4 - Paper, 5 - Air, 6 - Water, 7 - Undefined
@@ -11,6 +13,12 @@ contract RPS {
     uint public reward = 0;
     mapping (uint => Player) public player;
     uint public numInput = 0;
+
+    function reset() private {
+        numPlayer = 0;
+        reward = 0;
+        numInput = 0;
+    }
 
     function addPlayer() public payable {
         require(numPlayer < 2);
@@ -50,5 +58,7 @@ contract RPS {
             account0.transfer(reward / 2);
             account1.transfer(reward / 2);
         }
+
+        reset();
     }
 }
