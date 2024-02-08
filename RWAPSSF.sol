@@ -8,7 +8,6 @@ contract RWAPSSF {
     struct Player {
         uint choice; // 0 - Rock, 1 - Fire , 2 - Scissors, 3 - Sponge, 4 - Paper, 5 - Air, 6 - Water, 7 - Undefined
         uint timestamp;
-        uint playerNumber;
         address addr;
     }
 
@@ -27,7 +26,6 @@ contract RWAPSSF {
             playersNumber[player[i].addr] = 0;
             player[i].choice = 7;
             player[i].timestamp = 0;
-            player[i].playerNumber = 0;
             player[i].addr = address(0);
         }
     }
@@ -37,7 +35,7 @@ contract RWAPSSF {
         require(playerId != 0);
 
         Player memory temp = player[playerId];
-        return (temp.choice, temp.timestamp, temp.playerNumber, temp.addr);
+        return (temp.choice, temp.timestamp, playerId, temp.addr);
     }
 
     function viewGameStatus() public view returns(uint numberOfPlayer, uint gameReward, uint numberOfInput, uint canWithdrawAfter) {
@@ -53,7 +51,6 @@ contract RWAPSSF {
         numPlayer++;
         player[numPlayer].choice = 7;
         player[numPlayer].timestamp = block.timestamp;
-        player[numPlayer].playerNumber = numPlayer;
         player[numPlayer].addr = msg.sender;
         playersNumber[msg.sender] = numPlayer;
     }
