@@ -38,6 +38,7 @@
             - แก้ไขเงื่อนไขในการชนะ ปรับเพื่อให้รองรับการเล่น RWAPSSF
 
 ตัวอย่างการเล่น มีผู้ชนะ
+
     1. ผู้เล่นเข้าร่วมครบ 2 คน
 ![Alt text](./picture/pic00.png?raw=true "ผู้เล่น")
 ![Alt text](./picture/pic01.png?raw=true "ผู้เล่นเข้าร่วมครบ 2 คน")
@@ -49,12 +50,27 @@
     3. ผู้เล่นทั้ง 2 คน reveal คำตอบของตน
 ![Alt text](./picture/pic04.png?raw=true "ผู้เล่นคนแรก reveal คำตอบของตน")
 ![Alt text](./picture/pic05.png?raw=true "ผู้เล่นคนที่สอง reveal คำตอบของตน")
+* player คนหลังดูข้อมูลไม่ได้แล้ว
+![Alt text](./picture/pic06.png?raw=true "player คนหลังดูข้อมูลไม่ได้แล้ว")
 
     4. ผู้เล่นที่ชนะจะได้เงินไป 2 ether
-![Alt text](./picture/pic01.png?raw=true "ผู้เล่นเข้าร่วมครบ 2 คน")
+![Alt text](./picture/pic07.png?raw=true "ผู้เล่นที่ชนะจะได้เงินไป 2 ether")
 
 ตัวอย่างการเล่น เสมอ
+
     1. ผู้เล่นเข้าร่วมครบ 2 คน
+![Alt text](./picture/pic10.png?raw=true "ผู้เล่น")
+![Alt text](./picture/pic11.png?raw=true "ผู้เล่นเข้าร่วมครบ 2 คน")
+
     2. ผู้เล่นทั้ง 2 คนใส่ input ทั้งสองคน
+![Alt text](./picture/pic12.png?raw=true "ผู้เล่นคนแรกใส่ input")
+![Alt text](./picture/pic13.png?raw=true "ผู้เล่นคนที่สองใส่ input")
+
     3. ผู้เล่นทั้ง 2 คน reveal คำตอบของตน
-    4. ผู้เล่นแต่ละคนจะได้เงินคืนคนละ 1 ether
+![Alt text](./picture/pic14.png?raw=true "ผู้เล่นคนแรก reveal คำตอบของตน")
+![Alt text](./picture/pic15.png?raw=true "ผู้เล่นคนที่สอง reveal คำตอบของตน")
+* player คนหลังดูข้อมูลไม่ได้แล้ว
+![Alt text](./picture/pic16.png?raw=true "player คนหลังดูข้อมูลไม่ได้แล้ว")
+
+    4. ผู้เล่นได้เงินคืนคนละ 1 ether
+![Alt text](./picture/pic17.png?raw=true "ผู้เล่นได้เงินคืนคนละ 1 ether")
