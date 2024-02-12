@@ -24,7 +24,7 @@ contract RWAPSSF {
         reward = 0;
         numInput = 0;
         numReveal = 0;
-        for(uint i = 0; i < 2; i++) {
+        for(uint i = 1; i < 3; i++) {
             playersNumber[player[i].addr] = 0;
             player[i].choice = 7;
             player[i].commit = bytes32(0);
