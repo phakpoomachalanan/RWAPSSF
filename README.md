@@ -69,7 +69,7 @@
     3. ผู้เล่นทั้ง 2 คน reveal คำตอบของตน
 ![Alt text](./picture/pic14.png?raw=true "ผู้เล่นคนแรก reveal คำตอบของตน")
 ![Alt text](./picture/pic15.png?raw=true "ผู้เล่นคนที่สอง reveal คำตอบของตน")
-* player คนหลังดูข้อมูลไม่ได้แล้ว
+* player คนหลังดูข้อมูลไม่ได้แล้ว *
 ![Alt text](./picture/pic16.png?raw=true "player คนหลังดูข้อมูลไม่ได้แล้ว")
 
     4. ผู้เล่นได้เงินคืนคนละ 1 ether
