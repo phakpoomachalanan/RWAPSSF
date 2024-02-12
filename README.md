@@ -39,11 +39,19 @@
 
 ตัวอย่างการเล่น มีผู้ชนะ
     1. ผู้เล่นเข้าร่วมครบ 2 คน
+![Alt text](./picture/pic00.png?raw=true "ผู้เล่น")
 ![Alt text](./picture/pic01.png?raw=true "ผู้เล่นเข้าร่วมครบ 2 คน")
-    2. ผู้เล่นทั้ง 2 คนใส่ input ทั้งสองคน
-    3. ผู้เล่นทั้ง 2 คน reveal คำตอบของตน
-    4. ผู้เล่นที่ชนะจะได้เงินไป 2 ether
 
+    2. ผู้เล่นทั้ง 2 คนใส่ input ทั้งสองคน
+![Alt text](./picture/pic02.png?raw=true "ผู้เล่นคนแรกใส่ input")
+![Alt text](./picture/pic03.png?raw=true "ผู้เล่นคนที่สองใส่ input")
+
+    3. ผู้เล่นทั้ง 2 คน reveal คำตอบของตน
+![Alt text](./picture/pic04.png?raw=true "ผู้เล่นคนแรก reveal คำตอบของตน")
+![Alt text](./picture/pic05.png?raw=true "ผู้เล่นคนที่สอง reveal คำตอบของตน")
+
+    4. ผู้เล่นที่ชนะจะได้เงินไป 2 ether
+![Alt text](./picture/pic01.png?raw=true "ผู้เล่นเข้าร่วมครบ 2 คน")
 
 ตัวอย่างการเล่น เสมอ
     1. ผู้เล่นเข้าร่วมครบ 2 คน
