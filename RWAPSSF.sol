@@ -2,11 +2,7 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
-import "./CommitReveal.sol";
-
 contract RWAPSSF {
-    CommitReveal commitReveal = new CommitReveal();
-
     struct Player {
         uint choice; // 0 - Rock, 1 - Fire , 2 - Scissors, 3 - Sponge, 4 - Paper, 5 - Air, 6 - Water, 7 - Undefined
         bytes32 commit;
@@ -70,9 +66,8 @@ contract RWAPSSF {
         require(choice < 7, "Please select 0 - 6");
         require(numInput < 2, "Wait for reveal");
 
-        player[idx].commit = commitReveal.getSaltedHash(bytes32(choice), bytes32(salt));
+        player[idx].commit = keccak256(abi.encodePacked(bytes32(choice), bytes32(salt)));
         numInput++;
-        // commitReveal.commit(commitReveal.getSaltedHash(bytes32(choice), bytes32(salt)));
     }
 
     function revealChoice(uint choice, uint salt) public {
@@ -80,7 +75,7 @@ contract RWAPSSF {
         require(idx != 0, "Registered player only");
         require(numInput == 2, "Wait for reveal");
         require(player[idx].isRevealed == false, "Wait for reveal");
-        require(commitReveal.getSaltedHash(bytes32(choice), bytes32(salt)) == player[idx].commit, "Incorrect choice or salt");
+        require(keccak256(abi.encodePacked(bytes32(choice), bytes32(salt))) == player[idx].commit, "Incorrect choice or salt");
 
         player[idx].choice = choice;
         player[idx].isRevealed = true;
