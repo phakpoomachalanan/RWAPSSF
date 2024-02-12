@@ -104,8 +104,8 @@ contract RWAPSSF {
     function _checkWinnerAndPay() private {
         uint p0Choice = player[1].choice;
         uint p1Choice = player[2].choice;
-        address payable account0 = payable(player[0].addr);
-        address payable account1 = payable(player[1].addr);
+        address payable account0 = payable(player[1].addr);
+        address payable account1 = payable(player[2].addr);
 
         if ((p0Choice + 1) % 7 == p1Choice || (p0Choice + 2) % 7 == p1Choice || (p0Choice + 3) % 7 == p1Choice) {
             account0.transfer(reward);
